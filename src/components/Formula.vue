@@ -3,6 +3,8 @@
         <h2>{{symbol}}</h2><h4>({{name}})</h4><h5 v-if="unit">[{{unit}}]</h5>
         <details open>
             <summary>Formulas</summary>
+            {{formulas.length}} formula(s) found:
+            <br><br>
             {{formulas}}
         </details>
         <details>
@@ -20,7 +22,7 @@
             name: String,
             unit: String,
             description: String,
-            formulas: Array[String],
+            formulas: Array,
             filter: String
         },
         data() {
@@ -73,5 +75,12 @@
 
     summary:hover {
         cursor: pointer;
+    }
+
+    summary {
+        text-transform: uppercase;
+        letter-spacing: .1em;
+        font-weight: bolder;
+        color: var(--info);
     }
 </style>
