@@ -1,0 +1,15 @@
+{
+    "symbols": {
+        "Q": [{
+            "name": "Güte",
+            "formulas": ["Formel1"],
+            "description": "Die Güte z.B. eines Schwingkreises"
+        }]
+    },
+    "formulas": {
+        "Formel1": {
+            "formula": "x + 2",
+            "description": "Test Formel"
+        }
+    }
+}

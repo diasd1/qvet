@@ -1,0 +1,55 @@
+body {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.layout {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+.footer {
+    flex: 5;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.filter {
+    flex: 5;
+}
+
+.header {
+    flex: 5;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: flex-start;
+
+}
+
+.body {
+    flex: 85;
+    display: flex;
+    flex-direction: column;
+    justify-items: flex-start;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+h1.title {
+    align-self: flex-start;
+}
+
+h1 {
+    padding: 1vh;
+}
+
+p {
+    padding: 1vh;
+}
