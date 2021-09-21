@@ -1,28 +1,36 @@
-<template>
-    <div id="app">
-        <Landing msg="Welcome to Your Vue.js" />
-    </div>
-</template>
 
 <script>
     import Landing from './components/Landing.vue'
+    import HelloWorld from './components/HelloWorld.vue'
+
+    const routes = {
+        '/': Landing,
+        '/hello-world': HelloWorld
+    }
 
     export default {
         name: 'App',
         components: {
-            Landing
-        }
+            Landing, HelloWorld
+        },
+        data() {
+            return {
+                currentRoute: window.location.pathname
+            }
+        },
+        computed: {
+            ViewComponent() {
+                return routes[this.currentRoute] || HelloWorld
+            }
+        },
+        render(h) { return h(this.ViewComponent) }
     }
 </script>
 
-<style>
-    @font-face {
-        font-family: "Poppins";
-        src: local("Poppins"),
-            url(./assets/fonts/Poppins/Poppins-Light.ttf) format("truetype");
-    }
+<style src="./assets/fonts/Poppins/fontface.css"></style>
 
-    #app {
+<style>
+    html {
         font-family: "Poppins";
     }
 

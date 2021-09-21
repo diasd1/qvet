@@ -1,11 +1,11 @@
 <template>
-    <div class="formula" v-if="!hidden">
-        <h2>{{symbol}}</h2><h4>({{name}})</h4><h5 v-if="unit">[{{unit}}]</h5>
+    <div class="formulaSymbol" v-if="!hidden">
+        <h2>{{symbol}}</h2><h4>{{name}}</h4><h5 v-if="unit">{{"in " + unit}}</h5>
         <details open>
             <summary>Formulas</summary>
-            {{formulas.length}} formula(s) found:
-            <br><br>
-            {{formulas}}
+            <div class="formula-container" v-for="(formula, index) in formulas" :key="index">
+                <vue-mathjax  :formula="formula" />
+            </div>
         </details>
         <details>
             <summary>Description</summary>
@@ -15,8 +15,10 @@
 </template>
 
 <script>
+    import {VueMathjax} from 'vue-mathjax';
+
     export default {
-        name: 'Formula',
+        name: 'FormulaSymbol',
         props: {
             symbol: String,
             name: String,
@@ -25,9 +27,13 @@
             formulas: Array,
             filter: String
         },
+        components: {
+            "vue-mathjax": VueMathjax
+        },
         data() {
             return {
-                hidden: false
+                hidden: false,
+                //formulas: ["$$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}.$$", "$$z = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}.$$"]
             }
         },
         methods: {
@@ -44,17 +50,27 @@
     }
 </script>
 
+<style>
+    .MathJax_Display {
+        text-align: left !important;
+    }
+</style>
+
 <style scoped>
     @import '../assets/css/theme/dark.css';
     @import '../assets/css/applyTheme.css';
+
+    .formula-container {
+        margin: 30px;
+    }
 
     pre {
         font-family: "Poppins";
     }
 
-    .formula>h2, .formula>h4, .formula>h5 {
+    .formulaSymbol>h2, .formulaSymbol>h4, .formulaSymbol>h5 {
         display: inline-block;
-        margin-right: 2vh;
+        margin-right: 10px;
         margin-top: 0;
     }
 
@@ -66,10 +82,10 @@
         font-size: 1.2rem;
     }
 
-    .formula {
+    .formulaSymbol {
         background-color: var(--neutral);
-        padding: 5vh;
-        margin: 1vh;
+        padding: 40px;
+        margin: 10px 40px 10px 40px;
         border-radius: 20px;
     }
 

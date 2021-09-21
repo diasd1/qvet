@@ -1,13 +1,13 @@
 <template>
     <div class="body">
-        <Formula :filter="filter" symbol="Q" name="Güte" description="Güte eines Schwingkreises" :formulas="[1]" />
-        <Formula :filter="filter" symbol="U" name="Spannung" description="Spannung hahahah" unit="V" :formulas="[1,2,3]" />
-        <Formula :filter="filter" symbol="I" name="Strom" description="Strom hahahah" unit="A" :formulas="[1,2,3,4,5]" />
+        <FormulaSymbol :filter="filter" symbol="Q" name="Güte" description="Güte eines Schwingkreises" :formulas='["$$Q = {fr \\over B}$$"]' />
+        <FormulaSymbol :filter="filter" symbol="U" name="Spannung" description="Spannung halt" unit="V" :formulas='["$$U = {R * I}$$", "$$U = {P \\over I}$$"]' />
+        <FormulaSymbol :filter="filter" symbol="I" name="Strom" description="Strom halt" unit="A" :formulas="['$$I = {U \\over R}$$', '$$I = {P \\over U}.$$']" />
     </div>
 </template>
 
 <script>
-    import Formula from './Formula.vue'
+    import FormulaSymbol from './FormulaSymbol.vue'
 
     export default {
         name: 'Body',
@@ -15,7 +15,7 @@
             filter: String
         },
         components: {
-            Formula
+            FormulaSymbol
         }
     }
 </script>

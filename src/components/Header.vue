@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <h1 class="title">QV / ET - Search Engine</h1>
+    <h1 class="title">QV / ET</h1>
   </div>
 </template>
 

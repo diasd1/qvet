@@ -19,7 +19,7 @@
 </script>
 
 <style scoped>
-    .searchbox {
+    /*.searchbox {
         max-height: 4vh;
         font-size: 1.7rem;
         background-color: var(--background);
@@ -33,5 +33,5 @@
 
     .searchbox:focus {
         outline: none
-    }
+    }*/
 </style>

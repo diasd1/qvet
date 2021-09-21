@@ -1,9 +1,11 @@
 <template>
     <div class="layout">
         <Header />
-        <Searcher @onInputChange="onInputChange" />
-        <Body :filter="filter" />
-        <Footer />
+        <Searcher :symbols="['U', 'R', 'I', 'Q', 'fr', 'B']" @onInputChange="onInputChange" />
+        <div class="scrollablewrapper">
+            <Body :filter="filter" />
+            <Footer />
+        </div>
     </div>
 </template>
 
@@ -41,4 +43,12 @@
     @import '../assets/css/theme/dark.css';
     @import '../assets/css/applyTheme.css';
     @import '../assets/css/layout.css';
+
+    .scrollablewrapper {
+        overflow-x: hidden;
+        overflow-y: auto;
+        flex: 95;
+        display: flex;
+        flex-direction: column;
+    }
 </style>
