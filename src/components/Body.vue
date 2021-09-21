@@ -1,8 +1,8 @@
 <template>
     <div class="body">
-        <FormulaSymbol :filter="filter" symbol="Q" name="Güte" description="Güte eines Schwingkreises" :formulas='["$$Q = {fr \\over B}$$"]' />
-        <FormulaSymbol :filter="filter" symbol="U" name="Spannung" description="Spannung halt" unit="V" :formulas='["$$U = {R * I}$$", "$$U = {P \\over I}$$"]' />
-        <FormulaSymbol :filter="filter" symbol="I" name="Strom" description="Strom halt" unit="A" :formulas="['$$I = {U \\over R}$$', '$$I = {P \\over U}.$$']" />
+        <FormulaSymbol :filter="filter" symbol="Q" name="Güte" description="Güte eines Schwingkreises" :formulas='["\\(Q = {fr \\over B}\\)"]' />
+        <FormulaSymbol :filter="filter" symbol="U" name="Spannung" description="Spannung halt" unit="V" :formulas='["\\(U = {R * I}\\)", "\\(U = {P \\over I}\\)"]' />
+        <FormulaSymbol :filter="filter" symbol="I" name="Strom" description="Strom halt" unit="A" :formulas="['\\(I = {U \\over R}\\)', '\\(I = {P \\over U}\\)']" />
     </div>
 </template>
 

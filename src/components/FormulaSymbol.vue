@@ -13,9 +13,9 @@
         </details>
     </div>
 </template>
-
 <script>
     import {VueMathjax} from 'vue-mathjax';
+    import './../assets/js/mathjax/tex-chtml.js';
 
     export default {
         name: 'FormulaSymbol',
@@ -32,8 +32,7 @@
         },
         data() {
             return {
-                hidden: false,
-                //formulas: ["$$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}.$$", "$$z = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}.$$"]
+                hidden: false
             }
         },
         methods: {
@@ -51,7 +50,7 @@
 </script>
 
 <style>
-    .MathJax_Display {
+    .MathJax_Display, .formula-container {
         text-align: left !important;
     }
 </style>
