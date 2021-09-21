@@ -11,7 +11,6 @@
     //import Searchbox from './Searchbox/Searchbox.vue'
     import Autocomplete from '@trevoreyre/autocomplete-vue'
     import TagCollection from './TagCollection.vue'
-    import '@trevoreyre/autocomplete-vue/dist/style.css'
 
     export default {
         name: 'Searcher',
@@ -40,6 +39,8 @@
         }
     }
 </script>
+
+<style src="@trevoreyre/autocomplete-vue/dist/style.css"></style>
 
 <style>
 
