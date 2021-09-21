@@ -13,4 +13,9 @@ export default {
 <style scoped>
 @import '../assets/css/theme/dark.css';
 @import '../assets/css/applyTheme.css';
+
+h1 {
+  margin: 0;
+  margin-left: 30px;
+}
 </style>

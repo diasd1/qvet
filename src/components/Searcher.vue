@@ -52,7 +52,8 @@
 
 .symbol {
     width: 200px;
-    margin: 40px;
+    margin: 20px;
+    margin-left: 40px;
 }
 
 input {

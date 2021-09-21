@@ -21,7 +21,7 @@ body {
 }
 
 .filter {
-    flex: 5;
+    flex: 3;
 }
 
 .header {
@@ -34,7 +34,7 @@ body {
 }
 
 .body {
-    flex: 85;
+    flex: 90;
     display: flex;
     flex-direction: column;
     justify-items: flex-start;
