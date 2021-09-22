@@ -3,14 +3,14 @@
         <div class="symbol">
             <autocomplete @submit="sumbitHandler" :search="search" :placeholder="placeholder" />
         </div>
-        <!--TagCollection @filterUpdate="onInputChange" :tags="tags"/-->
+        <TagCollection v-if="multiselect" @filterUpdate="onInputChange" :tags="tags"/>
     </div>
 </template>
 
 <script>
     //import Searchbox from './Searchbox/Searchbox.vue'
     import Autocomplete from '@trevoreyre/autocomplete-vue'
-    //import TagCollection from './TagCollection.vue'
+    import TagCollection from './TagCollection.vue'
 
     export default {
         name: 'Searcher',
@@ -27,7 +27,7 @@
         },
         components: {
             Autocomplete,
-            //TagCollection
+            TagCollection
         },
         methods: {
             onInputChange: function(filter) {

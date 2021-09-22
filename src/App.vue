@@ -1,17 +1,19 @@
 
 <script>
     import Landing from './components/Landing.vue'
-    import HelloWorld from './components/HelloWorld.vue'
+    import FormulasPage from './components/FormulasPage.vue'
+    import NotFound from './components/NotFound.vue'
 
     const routes = {
         '/': Landing,
-        '/hello-world': HelloWorld
+        '/formulas': FormulasPage,
+        '/hello-world': NotFound
     }
 
     export default {
         name: 'App',
         components: {
-            Landing, HelloWorld
+            Landing, NotFound, FormulasPage
         },
         data() {
             return {
@@ -20,7 +22,7 @@
         },
         computed: {
             ViewComponent() {
-                return routes[this.currentRoute] || HelloWorld
+                return routes[this.currentRoute] || NotFound
             }
         },
         render(h) { return h(this.ViewComponent) }

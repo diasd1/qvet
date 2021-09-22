@@ -1,0 +1,8 @@
+a,
+a:visited {
+    color: var(--info);
+}
+
+a:hover {
+    color: var(--success);
+}
