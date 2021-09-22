@@ -54,11 +54,11 @@
     flex-direction: row;
     align-items: center;
     margin: 0px 10px 10px 0px;
-    max-width: 200px;
+    max-width: 180px;
 }
 
 .symbol {
-    width: 200px;
+    min-width: 160px;
 }
 
 input {

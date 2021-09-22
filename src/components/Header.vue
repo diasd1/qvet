@@ -16,6 +16,5 @@ export default {
 
 h1 {
   margin: 0;
-  margin-left: calc(10% - 10px);
 }
 </style>
