@@ -11,9 +11,6 @@ export default {
 </script>
 
 <style scoped>
-@import '../assets/css/theme/dark.css';
-@import '../assets/css/applyTheme.css';
-
 h1 {
   margin: 0;
 }

@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import Footer from './Footer.vue'
-import Header from './Header.vue'
+import Footer from '../layout/Footer.vue'
+import Header from '../layout/Header.vue'
 
 export default {
   name: 'NotFound',
@@ -26,10 +26,10 @@ export default {
 </script>
 
 <style scoped>
-    @import '../assets/css/theme/dark.css';
-    @import '../assets/css/applyTheme.css';
-    @import '../assets/css/layout.css';
-    @import '../assets/css/hyperlinks.css';
+    @import '../../assets/css/theme/dark.css';
+    @import '../../assets/css/applyTheme.css';
+    @import '../../assets/css/layout.css';
+    @import '../../assets/css/hyperlinks.css';
 
     .body {
       display: flex;

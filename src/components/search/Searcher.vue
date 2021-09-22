@@ -8,9 +8,8 @@
 </template>
 
 <script>
-    //import Searchbox from './Searchbox/Searchbox.vue'
     import Autocomplete from '@trevoreyre/autocomplete-vue'
-    import TagCollection from './TagCollection.vue'
+    import TagCollection from '../tagging/TagCollection.vue'
 
     export default {
         name: 'Searcher',

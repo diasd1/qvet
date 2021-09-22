@@ -9,8 +9,8 @@
 
 <script>
     import {VueMathjax} from 'vue-mathjax';
-    import FormulaSymbolSmall from "./FormulaSymbolSmall.vue"
-    import db from "../../db/main.json";
+    import FormulaSymbolSmall from "../symbols/FormulaSymbolSmall.vue"
+    import db from "../../../db/main.json";
 
     export default {
         name: 'FormulaContainer',

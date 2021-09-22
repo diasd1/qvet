@@ -4,7 +4,7 @@
       <p><a id="symbols" href="/">Main (Symbols)</a></p>
       <p><a id="formulas" href="/formulas">Formulas</a></p>
     </div>
-    <p id="madeBy">Made by <a href="https://github.com/dxstiny">dxstiny</a></p>
+    <p id="madeBy">{{year}}, Made with ❤️ by <a href="https://github.com/dxstiny">dxstiny</a> ({{version}})</p>
   </div>
 </template>
 
@@ -13,15 +13,17 @@ export default {
   name: 'Footer',
   props: {
     msg: String
+  },
+  data() {
+    return {
+      year: new Date().getFullYear(),
+      version: require('/package.json').version
+    }
   }
 }
 </script>
 
 <style scoped>
-@import '../assets/css/theme/dark.css';
-@import '../assets/css/applyTheme.css';
-@import '../assets/css/hyperlinks.css';
-
 .navbar {
   display: flex;
   flex-direction: row;

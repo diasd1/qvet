@@ -1,12 +1,13 @@
 <template>
     <div class="body">
-        <FormulaStandaloneContainer v-for="(formula, index) in db.formulas" :key="index" :filter="filter.symbol" :formula="formula" />
+        <FormulaSymbol v-for="(formulaSymbol, index) in formulaSymbols" :key="index" :filter="filter" :symbol="formulaSymbol.symbol"
+                       :name="formulaSymbol.name" :description="formulaSymbol.description" :unit="formulaSymbol.unit" :formulas="formulaSymbol.formulas" />
     </div>
 </template>
 
 <script>
-    import FormulaStandaloneContainer from './FormulaStandaloneContainer.vue'
-    import db from "../../db/main.json";
+    import FormulaSymbol from '../symbols/FormulaSymbol.vue'
+    import db from "../../../db/main.json";
 
     export default {
         name: 'Body',
@@ -14,7 +15,7 @@
             filter: Object
         },
         components: {
-            FormulaStandaloneContainer
+            FormulaSymbol
         },
         methods: {
             getFormula(name) {
@@ -47,14 +48,8 @@
         },
         data() {
             return {
-                formulaSymbols: this.getFormulaSymbols(),
-                db
+                formulaSymbols: this.getFormulaSymbols()
             }
         }
     }
 </script>
-
-<style scoped>
-    @import '../assets/css/theme/dark.css';
-    @import '../assets/css/applyTheme.css';
-</style>

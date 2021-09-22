@@ -15,9 +15,6 @@
 </script>
 
 <style scoped>
-    @import '../assets/css/theme/dark.css';
-    @import '../assets/css/applyTheme.css';
-
     .formula-container {
         margin: 30px;
     }

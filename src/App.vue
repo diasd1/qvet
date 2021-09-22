@@ -1,13 +1,12 @@
 
 <script>
-    import Landing from './components/Landing.vue'
-    import FormulasPage from './components/FormulasPage.vue'
-    import NotFound from './components/NotFound.vue'
+    import Landing from './components/pages/Landing.vue'
+    import FormulasPage from './components/pages/FormulasPage.vue'
+    import NotFound from './components/pages/NotFound.vue'
 
     const routes = {
         '/': Landing,
-        '/formulas': FormulasPage,
-        '/hello-world': NotFound
+        '/formulas': FormulasPage
     }
 
     export default {
