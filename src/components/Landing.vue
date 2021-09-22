@@ -76,5 +76,7 @@
         flex-direction: row;
         margin: 0px 10% 0px 10%;
         align-items: flex-start;
+        flex-wrap: wrap;
+        overflow-x: hidden;
     }
 </style>
