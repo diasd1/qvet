@@ -1,40 +1,45 @@
 <template>
     <div class="filter">
         <div class="symbol">
-            <autocomplete @submit="sumbitHandler" :search="search" placeholder="Formelzeichen" />
+            <autocomplete @submit="sumbitHandler" :search="search" :placeholder="placeholder" />
         </div>
-        <TagCollection :tags="tags"/>
+        <!--TagCollection @filterUpdate="onInputChange" :tags="tags"/-->
     </div>
 </template>
 
 <script>
     //import Searchbox from './Searchbox/Searchbox.vue'
     import Autocomplete from '@trevoreyre/autocomplete-vue'
-    import TagCollection from './TagCollection.vue'
+    //import TagCollection from './TagCollection.vue'
 
     export default {
         name: 'Searcher',
         data() {
             return {
-                tags: []
+                tags: this.multiselect ? [] : ""
             }
         },
         props: {
-            symbols: Array
+            symbols: Array,
+            placeholder: String,
+            id: String,
+            multiselect: { type: Boolean, default: false }
         },
         components: {
-            Autocomplete, TagCollection
+            Autocomplete,
+            //TagCollection
         },
         methods: {
             onInputChange: function(filter) {
-                this.$emit("onInputChange", filter)
+                this.$emit("onInputChange", filter, this.id)
             },
             search: function(input) {
                 return this.symbols.filter(x => x.toLowerCase().includes(input.toLowerCase()))
             },
             sumbitHandler: function(input) {
-                this.tags.push(input)
-                this.onInputChange(input)
+                input = input ? input : ""
+                this.multiselect ? this.tags.push(input) : this.tags = input
+                this.onInputChange(this.tags)
             }
         }
     }
@@ -48,12 +53,12 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin: 0px 10px 10px 0px;
+    max-width: 200px;
 }
 
 .symbol {
     width: 200px;
-    margin: 20px;
-    margin-left: 40px;
 }
 
 input {

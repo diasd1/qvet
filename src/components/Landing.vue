@@ -1,7 +1,11 @@
 <template>
     <div class="layout">
         <Header />
-        <Searcher :symbols="['U', 'R', 'I', 'Q', 'fr', 'B']" @onInputChange="onInputChange" />
+        <div class="searchers">
+            <Searcher :symbols="symbols" @onInputChange="onInputChange" id="symbol" placeholder="Formelzeichen" />
+            <Searcher :symbols="names" @onInputChange="onInputChange" id="name" placeholder="Name" />
+            <Searcher :symbols="units" @onInputChange="onInputChange" id="unit" placeholder="Einheit" />
+        </div>
         <div class="scrollablewrapper">
             <Body :filter="filter" />
             <Footer />
@@ -14,6 +18,9 @@
     import Footer from './Footer.vue'
     import Header from './Header.vue'
     import Searcher from './Searcher.vue'
+    import db from "../../db/main.json";
+
+    import Vue from 'vue'
 
     export default {
         name: 'Landing',
@@ -27,13 +34,25 @@
             Searcher
         },
         data() {
+            const symbols = Object.keys(db.symbols).sort()
+            const names = [].concat.apply([], Object.keys(db.symbols).map(x => db.symbols[x])).map(x => x.name).sort()
+            const units = [].concat.apply([], Object.keys(db.symbols).map(x => db.symbols[x])).map(x => x.unit || "None").sort()
+            const filter = { };
+
+            names.splice(0, 0, "(any)");
+            units.splice(0, 0, "(any)");
+            symbols.splice(0, 0, "(any)");
+
             return {
-                filter: ""
+                filter,
+                symbols,
+                names,
+                units
             }
         },
         methods: {
-            onInputChange: function(filter) {
-                this.filter = filter
+            onInputChange: function(filter, type) {
+                Vue.set(this.filter, type, typeof filter == "string" ? filter : filter[0])
             }
         }
     }
@@ -50,5 +69,12 @@
         flex: 95;
         display: flex;
         flex-direction: column;
+    }
+
+    .searchers {
+        display: flex;
+        flex-direction: row;
+        margin: 0px 10% 0px 10%;
+        align-items: flex-start;
     }
 </style>

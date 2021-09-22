@@ -1,11 +1,9 @@
 <template>
-    <div class="formulaSymbol" v-if="!hidden">
+    <div class="formulaSymbol" :class="{ 'hidden': hidden }">
         <h2>{{symbol}}</h2><h4>{{name}}</h4><h5 v-if="unit">{{"in " + unit}}</h5>
         <details open>
             <summary>Formulas</summary>
-            <div class="formula-container" v-for="(formula, index) in formulas" :key="index">
-                <vue-mathjax  :formula="formula" />
-            </div>
+            <FormulaContainer v-for="(formula, index) in formulas" :key="index" :formula="formula" />
         </details>
         <details>
             <summary>Description</summary>
@@ -14,7 +12,7 @@
     </div>
 </template>
 <script>
-    import {VueMathjax} from 'vue-mathjax';
+    import FormulaContainer from "./FormulaContainer.vue"
 
     export default {
         name: 'FormulaSymbol',
@@ -24,10 +22,10 @@
             unit: String,
             description: String,
             formulas: Array,
-            filter: String
+            filter: Object
         },
         components: {
-            "vue-mathjax": VueMathjax
+            FormulaContainer
         },
         data() {
             return {
@@ -35,24 +33,44 @@
             }
         },
         methods: {
-            getKeyWords() {
-                const t = `${this.symbol ? this.symbol : ""} ${this.name ? this.name : ""} ${this.unit ? this.unit : ""}`.toLowerCase()
-                return t;
+            filterSymbol(filter) {
+                if (!filter.symbol || filter.symbol == "(any)")
+                {
+                    return false;
+                }
+
+                const t = (this.symbol ? this.symbol : "").toLowerCase()
+                return !filter.symbol.toLowerCase().includes(t);
+            },
+            filterUnit(filter) {
+                if (!filter.unit || filter.unit == "(any)")
+                {
+                    return false;
+                }
+
+                const t = (this.unit ? this.unit : "None").toLowerCase()
+                return !filter.unit.toLowerCase().includes(t);
+            },
+            filterName(filter) {
+                if (!filter.name || filter.name == "(any)")
+                {
+                    return false;
+                }
+
+                const t = (this.name ? this.name : "").toLowerCase()
+                return !filter.name.toLowerCase().includes(t);
             }
         },
         watch: {
-            filter: function() {
-                this.hidden = !this.getKeyWords().includes(this.filter.toLowerCase())
+            filter: {
+                handler: function() {
+                    this.hidden = this.filterSymbol(this.filter) || this.filterUnit(this.filter) || this.filterName(this.filter)
+                },
+                deep: true
             }
         }
     }
 </script>
-
-<style>
-    .MathJax_Display, .formula-container {
-        text-align: left !important;
-    }
-</style>
 
 <style scoped>
     @import '../assets/css/theme/dark.css';
@@ -83,7 +101,7 @@
     .formulaSymbol {
         background-color: var(--neutral);
         padding: 40px;
-        margin: 10px 40px 10px 40px;
+        margin: 10px 10% 10px 10%;
         border-radius: 20px;
     }
 

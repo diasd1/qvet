@@ -2,14 +2,47 @@
     "symbols": {
         "Q": [{
             "name": "Güte",
-            "formulas": ["Formel1"],
-            "description": "Die Güte z.B. eines Schwingkreises"
+            "formulas": ["frQB"],
+            "description": "Die Güte z.B. eines Schwingkreises",
+            "unit": null
+        }],
+        "U": [{
+            "name": "Spannung",
+            "formulas": ["URI", "PUI"],
+            "description": "Die Spannung",
+            "unit": "V"
+        }],
+        "I": [{
+            "name": "Strom",
+            "formulas": ["URI", "PUI"],
+            "description": "Der Strom",
+            "unit": "A"
+        }],
+        "P": [{
+            "name": "Leistung",
+            "formulas": ["PUI"],
+            "description": "Die Leistung",
+            "unit": "W"
+        }],
+        "R": [{
+            "name": "Widerstand",
+            "formulas": ["URI"],
+            "description": "Der Widerstand",
+            "unit": "Ω"
         }]
     },
     "formulas": {
-        "Formel1": {
-            "formula": "x + 2",
-            "description": "Test Formel"
+        "frQB": {
+            "formula": "\\(Q = {fr \\over B}\\)",
+            "description": "Güte Q und Bandbreite B bei Resonanzfrequenz fr berechnen"
+        },
+        "URI": {
+            "formula": "\\(U = {R * I}\\)",
+            "description": "Spannung U durch Widerstand R und Strom I bestimmen"
+        },
+        "PUI": {
+            "formula": "\\(P = {U * I}\\)",
+            "description": "Leistung P durch Spannung U und Strom I bestimmen"
         }
     }
 }

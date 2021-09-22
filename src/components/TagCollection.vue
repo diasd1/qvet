@@ -23,6 +23,7 @@
         methods: {
             deleteTag(index) {
                 this.items.splice(index, 1)
+                this.$emit("filterUpdate", this.items)
             }
         }
     }

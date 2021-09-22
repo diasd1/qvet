@@ -30,6 +30,10 @@
 <style src="./assets/fonts/Poppins/fontface.css"></style>
 
 <style>
+    .hidden {
+        display: none !important;
+    }
+
     html {
         font-family: "Poppins";
     }
