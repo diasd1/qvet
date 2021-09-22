@@ -15,7 +15,6 @@
 </template>
 <script>
     import {VueMathjax} from 'vue-mathjax';
-    import './../assets/js/mathjax/tex-chtml.js';
 
     export default {
         name: 'FormulaSymbol',
