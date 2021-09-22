@@ -17,7 +17,7 @@ export default {
   data() {
     return {
       year: new Date().getFullYear(),
-      version: require('/package.json').version
+      version: require('/package.json').version || "0.9.0"
     }
   }
 }
