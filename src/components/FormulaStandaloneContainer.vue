@@ -68,7 +68,7 @@
                 handler: function() {
                     const symbols = this.symbols.map(x => x.symbol)
 
-                    this.hidden = !this.filter.every(x => symbols.includes(x))
+                    this.hidden = !this.filter.every(x => symbols.includes(x) || x == "(any)")
                 },
                 deep: true
             }
