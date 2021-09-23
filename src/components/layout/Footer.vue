@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import pkg from  '/package.json';
+
 export default {
   name: 'Footer',
   props: {
@@ -17,7 +19,7 @@ export default {
   data() {
     return {
       year: new Date().getFullYear(),
-      version: require('/package.json').version || "0.9.0"
+      version: pkg.version || "0.9.0"
     }
   }
 }
