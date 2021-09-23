@@ -14,9 +14,11 @@ module.exports = {
         appleMobileWebAppStatusBarStyle: 'black',
         manifestPath: 'manifest.json',
         workboxPluginMode: 'InjectManifest',
-        /*workboxOptions: {
-            exclude: ['_redirects'],
-        }*/
+        workboxOptions: {
+            // swSrc is required in InjectManifest mode.
+            swSrc: 'public/service-worker.js',
+            // ...other Workbox options...
+        }
     },
     configureWebpack: {
         performance: {
