@@ -1,11 +1,35 @@
 module.exports = {
-  pwa: {
-    iconPaths: {
-      favicon32: "./public/favicon.png",
-      favicon16: "./public/favicon.png",
-      appleTouchIcon: "./public/favicon.png",
-      maskIcon: "./public/favicon.png",
-      msTileImage: "./public/favicon.png"
+    pluginOptions: {
+        electronBuilder: {
+            builderOptions: {
+                productName: "QV / ET",
+                appId: "qvet.tink.ga"
+            },
+        },
+    },
+    pwa: {
+        themeColor: '#1e1e1e',
+        msTileColor: '#000000',
+        appleMobileWebAppCapable: 'yes',
+        appleMobileWebAppStatusBarStyle: 'black',
+
+        // configure the workbox plugin
+        workboxPluginMode: 'InjectManifest',
+        workboxOptions: {
+            // swSrc is required in InjectManifest mode.
+            swSrc: 'dev/sw.js',
+            // ...other Workbox options...
+        }
+    },
+    configureWebpack: {
+        performance: {
+            hints: false
+        },
+        optimization: {
+            splitChunks: {
+                minSize: 10000,
+                maxSize: 250000,
+            }
+        }
     }
-  }
 };

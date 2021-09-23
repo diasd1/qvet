@@ -1,8 +1,10 @@
-
 <script>
     import Landing from './components/pages/Landing.vue'
     import FormulasPage from './components/pages/FormulasPage.vue'
     import NotFound from './components/pages/NotFound.vue'
+    import Vue from 'vue';
+    import VueMeta from 'vue-meta';
+    Vue.use(VueMeta)
 
     const routes = {
         '/': Landing,
@@ -12,7 +14,9 @@
     export default {
         name: 'App',
         components: {
-            Landing, NotFound, FormulasPage
+            Landing,
+            NotFound,
+            FormulasPage
         },
         data() {
             return {
@@ -24,7 +28,35 @@
                 return routes[this.currentRoute] || NotFound
             }
         },
-        render(h) { return h(this.ViewComponent) }
+        render(h) {
+            return h(this.ViewComponent)
+        },
+        metaInfo() {
+            return {
+                title: "QV / ET",
+                meta: [{
+                        name: 'description',
+                        content: 'QV / ET is a search engine, specifically designed to help students with their electronics engineer QV'
+                    },
+                    {
+                        property: 'og:title',
+                        content: "QV / ET - The Search Engine"
+                    },
+                    {
+                        property: 'og:site_name',
+                        content: 'QV / ET'
+                    },
+                    {
+                        property: 'og:type',
+                        content: 'website'
+                    },
+                    {
+                        name: 'robots',
+                        content: 'index'
+                    }
+                ]
+            }
+        }
     }
 </script>
 
