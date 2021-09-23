@@ -1,6 +1,6 @@
 <template>
     <div class="formulaSymbol" :class="{ 'hidden': hidden }">
-        <h2>{{symbol}}</h2><h4>{{name}}</h4><h5 v-if="unit">{{"in " + unit}}</h5>
+        <a class="anchor" :id="symbol"><h2>{{symbol}}</h2><h4>{{name}}</h4><h5 v-if="unit">{{"in " + unit}}</h5></a>
         <details open>
             <summary>Formulas</summary>
             <FormulaContainer v-for="(formula, index) in formulas" :key="index" :formula="formula" />
@@ -81,7 +81,7 @@
         font-family: "Poppins";
     }
 
-    .formulaSymbol>h2, .formulaSymbol>h4, .formulaSymbol>h5 {
+    .formulaSymbol>a>h2, .formulaSymbol>a>h4, .formulaSymbol>a>h5 {
         display: inline-block;
         margin-right: 10px;
         margin-top: 0;

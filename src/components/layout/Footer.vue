@@ -19,7 +19,7 @@ export default {
   data() {
     return {
       year: new Date().getFullYear(),
-      version: pkg.version || "0.9.0"
+      version: pkg.version || "0.9.2"
     }
   }
 }

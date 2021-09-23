@@ -14,19 +14,19 @@
         }],
         "I": [{
             "name": "Strom",
-            "formulas": ["URI", "PUI"],
+            "formulas": ["URI", "PUI", "PRI"],
             "description": "Der Strom",
             "unit": "A"
         }],
         "P": [{
             "name": "Leistung",
-            "formulas": ["PUI"],
+            "formulas": ["PUI", "PRI"],
             "description": "Die Leistung",
             "unit": "W"
         }],
         "R": [{
             "name": "Widerstand",
-            "formulas": ["URI"],
+            "formulas": ["URI", "PRI"],
             "description": "Der Widerstand",
             "unit": "Ω"
         }]
@@ -43,6 +43,10 @@
         "PUI": {
             "formula": "\\(P = {U * I}\\)",
             "description": "Leistung P durch Spannung U und Strom I bestimmen"
+        },
+        "PRI": {
+            "formula": "\\(P = {R * I ^ 2}\\)",
+            "description": "Leistung P durch Widerstand R und Strom I bestimmen"
         }
     }
 }

@@ -1,6 +1,6 @@
 <template>
     <div class="formula-container" :class="{ 'hidden': hidden }">
-        <h4>{{formula.name}}</h4>
+        <a class="anchor" :id="formula.name"><h4>{{formula.name}}</h4></a>
         <vue-mathjax :formula="formula.formula" />
         <br><br>
         <FormulaSymbolSmall v-for="(symbol, index) in symbols" :key="index" :symbol="symbol.symbol" :name="symbol.name" :unit="symbol.unit" />
