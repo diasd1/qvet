@@ -97,6 +97,17 @@
         flex-direction: row;
     }
 
+    @media only screen
+    and (max-device-width : 500px)
+    and (max-device-height : 800px)
+    {
+        .formula-container {
+            padding: 5px;
+            margin: 10px 0 10px 0 !important;
+            border-radius: 5px;
+        }
+    }
+
     .formula-main {
         flex: 1;
     }

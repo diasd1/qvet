@@ -1,7 +1,7 @@
 <template>
     <div class="layout">
-        <Header />
-        <div class="searchers">
+        <Header @switchExpand="switchExpandHeader" />
+        <div v-if="!hideHeading" class="searchers">
             <Searcher :symbols="symbols" @onInputChange="onInputChange" id="symbol" placeholder="Formelzeichen"
                 :multiselect="true" />
         </div>
@@ -47,10 +47,14 @@
                 filter,
                 symbols,
                 names,
-                units
+                units,
+                hideHeading: false
             }
         },
         methods: {
+            switchExpandHeader(expanded) {
+                this.hideHeading = !expanded
+            },
             onInputChange: function(filter, type) {
                 Vue.set(this.filter, type, typeof filter == "string" ? filter : filter)
             }

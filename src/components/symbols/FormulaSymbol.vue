@@ -102,6 +102,17 @@
         border-radius: 20px;
     }
 
+    @media only screen
+    and (max-device-width : 500px)
+    and (max-device-height : 800px)
+    {
+        .formulaSymbol {
+            padding: 5px;
+            margin: 10px 0 10px 0;
+            border-radius: 0;
+        }
+    }
+
     summary:hover {
         cursor: pointer;
     }

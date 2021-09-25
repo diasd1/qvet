@@ -122,4 +122,15 @@
         font-size: 1.2rem;
         margin: 5px 0px 10px 0px;
     }
+
+    @media only screen
+    and (max-device-width : 500px)
+    and (max-device-height : 800px)
+    {
+        .formula-container {
+            padding: 5px;
+            margin: 10px 0 10px 0;
+            border-radius: 0;
+        }
+    }
 </style>
