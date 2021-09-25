@@ -1,5 +1,5 @@
 module.exports = {
-	globDirectory: 'dist/',
+	globDirectory: 'public/',
 	globPatterns: [
 		'**/*.{css,ttf,png,ico,html,js,json,txt}'
 	],
@@ -7,5 +7,5 @@ module.exports = {
 		/^utm_/,
 		/^fbclid$/
 	],
-	swDest: 'dist/sw.js'
+	swDest: 'public/service-worker.js'
 };
