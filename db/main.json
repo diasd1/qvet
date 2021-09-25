@@ -33,19 +33,19 @@
     },
     "formulas": {
         "frQB": {
-            "formula": "\\(Q = {fr \\over B}\\)",
+            "formula": "Q = fr / B",
             "description": "Güte Q und Bandbreite B bei Resonanzfrequenz fr berechnen"
         },
         "URI": {
-            "formula": "\\(U = {R * I}\\)",
+            "formula": "U = R * I",
             "description": "Spannung U durch Widerstand R und Strom I bestimmen"
         },
         "PUI": {
-            "formula": "\\(P = {U * I}\\)",
+            "formula": "P = U * I",
             "description": "Leistung P durch Spannung U und Strom I bestimmen"
         },
         "PRI": {
-            "formula": "\\(P = {R * I ^ 2}\\)",
+            "formula": "P = R * I ^ 2",
             "description": "Leistung P durch Widerstand R und Strom I bestimmen"
         }
     }

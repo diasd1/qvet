@@ -3,7 +3,7 @@
         <a class="anchor" :id="symbol"><h2>{{symbol}}</h2><h4>{{name}}</h4><h5 v-if="unit">{{"in " + unit}}</h5></a>
         <details open>
             <summary>Formulas</summary>
-            <FormulaContainer v-for="(formula, index) in formulas" :key="index" :formula="formula" />
+            <FormulaContainer v-for="(formula, index) in formulas" :key="index" :solveFor="symbol" :formula="formula" />
         </details>
         <details>
             <summary>Description</summary>

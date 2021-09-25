@@ -1,10 +1,15 @@
 module.exports = {
     pluginOptions: {
         electronBuilder: {
+            nodeIntegration: true,
             builderOptions: {
                 productName: "QV / ET",
                 appId: "qvet.tink.ga"
             },
+            chainWebpackRendererProcess(config) {
+                config.plugins.delete('workbox')
+                config.plugins.delete('pwa')
+            }
         },
     },
     pwa: {

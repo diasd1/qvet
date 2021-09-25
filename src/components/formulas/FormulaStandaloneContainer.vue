@@ -1,9 +1,9 @@
 <template>
     <div class="formula-container" :class="{ 'hidden': hidden }">
         <a class="anchor" :id="formula.name"><h4>{{formula.name}}</h4></a>
-        <vue-mathjax :formula="formula.formula" />
+        <vue-mathjax :formula="getFormattedFormula(formula.formula)" />
         <br><br>
-        <FormulaSymbolSmall v-for="(symbol, index) in symbols" :key="index" :symbol="symbol.symbol" :name="symbol.name" :unit="symbol.unit" />
+        <FormulaSymbolSmall @valueChange="valueChange" v-for="(symbol, index) in symbols" :key="index" :withInput="true" :value="symbol.value" :symbol="symbol.symbol" :name="symbol.name" :unit="symbol.unit" />
     </div>
 </template>
 
@@ -26,7 +26,8 @@
 
             return {
                 symbols,
-                hidden: false
+                hidden: false,
+                values: { }
             }
         },
         props: {
@@ -34,6 +35,32 @@
             filter: Array
         },
         methods: {
+            getFormattedFormula(latexFormula) {
+                const t = window.nerdamer.convertToLaTeX(latexFormula)
+                return `\\(${t}\\)`;
+            },
+            valueChange(symbol, value) {
+                this.symbols.find(x => x.symbol == symbol).value = value
+
+                if (value == null)
+                {
+                    delete this.values[symbol]
+                    return;
+                }
+                else
+                {
+                    this.values[symbol] = value
+                }
+
+                const unvalued = this.symbols.filter(x => x.value == null)
+
+                if (unvalued.length != 1)
+                {
+                    return;
+                }
+                let vals = Object.assign({}, this.values);
+                unvalued[0].value = window.nerdamer(this.formula.formula, vals).solveFor(unvalued[0].symbol).toString()
+            },
             onDelete() {
                 this.$emit("delete")
             },
@@ -55,7 +82,8 @@
                             name: formulaSymbol.name,
                             description: formulaSymbol.description,
                             unit: formulaSymbol.unit,
-                            formulas: formulaSymbol.formulas.map(x => this.getFormula(x))
+                            formulas: formulaSymbol.formulas.map(x => this.getFormula(x)),
+                            value: null
                         })
                     }
                 }

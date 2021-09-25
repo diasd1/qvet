@@ -14,6 +14,8 @@
 import Footer from '../layout/Footer.vue'
 import Header from '../layout/Header.vue'
 
+console.log(window.location.pathname)
+
 export default {
   name: 'NotFound',
   components: {

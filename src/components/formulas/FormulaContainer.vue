@@ -4,7 +4,7 @@
             <a class="flexa" target="_blank" :href="`/formulas#${formula.name}`">
                 <h4>{{formula.name}}</h4>
             </a>
-            <vue-mathjax :formula="formula.formula" />
+            <vue-mathjax :formula="getConvertedFormula(formula.formula)" />
         </div>
         <div class="formula-symbols">
             <FormulaSymbolSmall v-for="(symbol, index) in symbols" :key="index" :symbol="symbol.symbol"
@@ -37,9 +37,20 @@
             }
         },
         props: {
-            formula: Object
+            formula: Object,
+            solveFor: String
         },
         methods: {
+            getFormattedFormula(latexFormula) {
+                const t = window.nerdamer.convertToLaTeX(latexFormula)
+                return `\\(${t}\\)`;
+            },
+            getConvertedFormula(latexFormula) {
+                let convertedFormula = window.nerdamer.solve(latexFormula, this.solveFor).toString()
+                convertedFormula = convertedFormula.slice(1, convertedFormula.length - 1)
+                const t = window.nerdamer(convertedFormula).toTeX()
+                return `\\(${this.solveFor} = ${t}\\)`;
+            },
             onDelete() {
                 this.$emit("delete")
             },

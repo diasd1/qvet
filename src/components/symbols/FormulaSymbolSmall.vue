@@ -1,6 +1,6 @@
 <template>
     <div class="formulaSymbolSmall">
-        <b>{{symbol}}</b>: <span>{{name}}</span> <span v-if="unit">[{{unit}}]</span>
+        <input class="numberinput" v-if="withInput" v-model="numericValue" type="number"><b>{{symbol}}</b>: <span>{{name}}</span> <span v-if="unit">[{{unit}}]</span>
     </div>
 </template>
 <script>
@@ -9,12 +9,42 @@
         props: {
             symbol: String,
             name: String,
-            unit: String
+            unit: String,
+            value: String,
+            withInput: Boolean
+        },
+        data() {
+            return {
+                numericValue: this.value
+            }
+        },
+        watch: {
+            numericValue: function(value) {
+                this.$emit("valueChange", this.symbol, (value && value.length != 0) ? value : null)
+            },
+            value: function(value) {
+                this.numericValue = value
+            }
         }
     }
 </script>
 
 <style scoped>
+
+    .numberinput {
+        margin-right: 20px;
+        margin-bottom: 5px;
+        max-width: 100px;
+        background: none;
+        border: none;
+        border-bottom: 1px solid var(--text);
+        color: var(--text)
+    }
+
+    .numberinput:focus {
+        outline: none;
+    }
+
     .formula-container {
         margin: 30px;
     }
