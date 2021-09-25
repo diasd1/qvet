@@ -21,7 +21,7 @@ module.exports = {
         manifestPath: 'manifest.json',
         workboxPluginMode: 'InjectManifest',
         workboxOptions: {
-            swSrc: './public/sw.js',
+            swSrc: './public/service-worker.js',
         }
     },
     configureWebpack: {
