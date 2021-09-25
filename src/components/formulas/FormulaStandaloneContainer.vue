@@ -27,7 +27,8 @@
             return {
                 symbols,
                 hidden: false,
-                values: { }
+                values: { },
+                cachedSymbol: null
             }
         },
         props: {
@@ -44,7 +45,8 @@
 
                 if (value == null)
                 {
-                    delete this.values[symbol]
+                    delete this.values[symbol];
+                    this.cachedSymbol = null;
                     return;
                 }
                 else
@@ -54,12 +56,14 @@
 
                 const unvalued = this.symbols.filter(x => x.value == null)
 
-                if (unvalued.length != 1)
+                if (unvalued.length != 1 && !this.cachedSymbol)
                 {
                     return;
                 }
+                this.cachedSymbol = unvalued.length == 1 ? unvalued[0] : this.cachedSymbol
                 let vals = Object.assign({}, this.values);
-                unvalued[0].value = window.nerdamer(this.formula.formula, vals).solveFor(unvalued[0].symbol).toString()
+                delete vals[this.cachedSymbol.symbol];
+                this.cachedSymbol.value = window.nerdamer(this.formula.formula, vals).solveFor(this.cachedSymbol.symbol).toString()
             },
             onDelete() {
                 this.$emit("delete")
