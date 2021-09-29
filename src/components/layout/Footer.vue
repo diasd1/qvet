@@ -19,7 +19,7 @@
         data() {
             return {
                 year: new Date().getFullYear(),
-                version: pkg.version || "0.9.4"
+                version: pkg.version || "0.9.5"
             }
         }
     }
@@ -47,7 +47,9 @@
         text-align: right;
     }
 
-    @media only screen and (max-device-width : 500px) and (max-device-height : 800px) {
+    @media only screen
+    and (max-device-width : 700px)
+    {
         .navbar {
             margin-left: 5px;
         }

@@ -63,7 +63,7 @@
                 this.cachedSymbol = unvalued.length == 1 ? unvalued[0] : this.cachedSymbol
                 let vals = Object.assign({}, this.values);
                 delete vals[this.cachedSymbol.symbol];
-                this.cachedSymbol.value = window.nerdamer(this.formula.formula, vals).solveFor(this.cachedSymbol.symbol).toString()
+                this.cachedSymbol.value = window.nerdamer(this.formula.formula, vals).solveFor(this.cachedSymbol.symbol).text()
             },
             onDelete() {
                 this.$emit("delete")
@@ -128,8 +128,7 @@
     }
 
     @media only screen
-    and (max-device-width : 500px)
-    and (max-device-height : 800px)
+    and (max-device-width : 700px)
     {
         .formula-container {
             padding: 5px;

@@ -103,8 +103,7 @@
     }
 
     @media only screen
-    and (max-device-width : 500px)
-    and (max-device-height : 800px)
+    and (max-device-width : 700px)
     {
         .formulaSymbol {
             padding: 5px;
