@@ -1,5 +1,5 @@
 module.exports = {
-    assetsDir: 'public',
+    assetsDir: '',
     pluginOptions: {
         electronBuilder: {
             nodeIntegration: true,
