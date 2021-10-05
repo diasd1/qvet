@@ -1,6 +1,10 @@
 <template>
     <div class="formulaSymbol" :class="{ 'hidden': hidden }">
-        <a class="anchor" :id="symbol"><h2>{{symbol}}</h2><h4>{{name}}</h4><h5 v-if="unit">{{"in " + unit}}</h5></a>
+        <a class="anchor" :id="symbol">
+            <h2 v-html="symbol"></h2>
+            <h4>{{name}}</h4>
+            <h5 v-if="unit">in <vue-mathjax :formula="getFormattedFormula(unit)" /></h5>
+        </a>
         <details open>
             <summary>Formulas</summary>
             <FormulaContainer v-for="(formula, index) in formulas" :key="index" :solveFor="symbol" :formula="formula" />
@@ -12,6 +16,9 @@
     </div>
 </template>
 <script>
+    import {
+        VueMathjax
+    } from 'vue-mathjax';
     import FormulaContainer from "../formulas/FormulaContainer.vue"
 
     export default {
@@ -25,6 +32,7 @@
             filter: Object
         },
         components: {
+            "vue-mathjax": VueMathjax,
             FormulaContainer
         },
         data() {
@@ -33,6 +41,10 @@
             }
         },
         methods: {
+            getFormattedFormula(latexFormula) {
+                const t = window.nerdamer.convertToLaTeX(latexFormula)
+                return `\\(${t}\\)`;
+            },
             filterSymbol(filter) {
                 if (!filter.symbol || filter.symbol == "(any)")
                 {

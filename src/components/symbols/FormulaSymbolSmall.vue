@@ -1,9 +1,14 @@
 <template>
     <div class="formulaSymbolSmall">
-        <input class="numberinput" v-if="withInput" v-model="numericValue" type="number"><b>{{symbol}}</b>: <span>{{name}}</span> <span v-if="unit">[{{unit}}]</span>
+        <input class="numberinput" v-if="withInput" v-model="numericValue" type="number">
+        <b v-html="symbol"/>: <span>{{name}}</span> <span v-if="unit">[<vue-mathjax :formula="getFormattedFormula(unit)" />]</span>
     </div>
 </template>
 <script>
+    import {
+        VueMathjax
+    } from 'vue-mathjax';
+
     export default {
         name: 'FormulaSymbolSmall',
         props: {
@@ -13,10 +18,19 @@
             value: String,
             withInput: Boolean
         },
+        components: {
+            "vue-mathjax": VueMathjax,
+        },
         data() {
             return {
                 numericValue: this.value
             }
+        },
+        methods: {
+            getFormattedFormula(latexFormula) {
+                const t = window.nerdamer.convertToLaTeX(latexFormula)
+                return `\\(${t}\\)`;
+            },
         },
         watch: {
             numericValue: function(value) {
