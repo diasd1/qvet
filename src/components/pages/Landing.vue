@@ -35,9 +35,13 @@
         },
         data() {
             const symbols = Object.keys(db.symbols).sort()
-            const names = [].concat.apply([], Object.keys(db.symbols).map(x => db.symbols[x])).map(x => x.name).sort()
-            const units = [].concat.apply([], Object.keys(db.symbols).map(x => db.symbols[x])).map(x => x.unit || "None").sort()
+            let names = [].concat.apply([], Object.keys(db.symbols).map(x => db.symbols[x])).map(x => x.name).sort()
+            let units = [].concat.apply([], Object.keys(db.symbols).map(x => db.symbols[x])).map(x => x.unit || "None").sort()
             const filter = { };
+
+            // filter uniques
+            names = Array.from(new Set(names.map(c => c)));
+            units = Array.from(new Set(units.map(c => c)));
 
             names.splice(0, 0, "(any)");
             units.splice(0, 0, "(any)");

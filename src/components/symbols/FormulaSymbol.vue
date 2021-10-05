@@ -1,7 +1,7 @@
 <template>
     <div class="formulaSymbol" :class="{ 'hidden': hidden }">
         <a class="anchor" :id="symbol">
-            <h2 v-html="symbol"></h2>
+            <h2><vue-mathjax :formula="getFormattedFormula(symbol)" /></h2>
             <h4>{{name}}</h4>
             <h5 v-if="unit">in <vue-mathjax :formula="getFormattedFormula(unit)" /></h5>
         </a>
@@ -42,8 +42,16 @@
         },
         methods: {
             getFormattedFormula(latexFormula) {
-                const t = window.nerdamer.convertToLaTeX(latexFormula)
-                return `\\(${t}\\)`;
+                try {
+                    const t = window.nerdamer.convertToLaTeX(latexFormula)
+                    return `\\(${t}\\)`;
+                } catch (e) { console.error(e) }
+                try {
+                    let t = window.nerdamer.convertToLaTeX(latexFormula.replaceAll("°", "CDEGREE"))
+                    t = t.replaceAll("CDEGREE", "°")
+                    return `\\(${t}\\)`;
+                } catch (e) { console.error(e) }
+                return latexFormula;
             },
             filterSymbol(filter) {
                 if (!filter.symbol || filter.symbol == "(any)")
