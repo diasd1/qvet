@@ -42,8 +42,16 @@
         },
         methods: {
             getFormattedFormula(latexFormula) {
-                const t = window.nerdamer.convertToLaTeX(latexFormula)
-                return `\\(${t}\\)`;
+                try {
+                    const t = window.nerdamer.convertToLaTeX(latexFormula)
+                    return `\\(${t}\\)`;
+                } catch (e) { console.error(e) }
+                try {
+                    let t = window.nerdamer.convertToLaTeX(latexFormula.replaceAll("°", "CDEGREE"))
+                    t = t.replaceAll("CDEGREE", "°")
+                    return `\\(${t}\\)`;
+                } catch (e) { console.error(e) }
+                return latexFormula;
             },
             getConvertedFormula(latexFormula) {
                 let convertedFormula = window.nerdamer.solve(latexFormula, this.solveFor).toString()

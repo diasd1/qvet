@@ -1,7 +1,7 @@
 <template>
     <div class="formulaSymbolSmall">
         <input class="numberinput" v-if="withInput" v-model="numericValue" type="number">
-        <b v-html="symbol"/>: <span>{{name}}</span> <span v-if="unit">[<vue-mathjax :formula="getFormattedFormula(unit)" />]</span>
+        <b><vue-mathjax :formula="getFormattedFormula(symbol)" /></b>: <span>{{name}}</span> <span v-if="unit">[<vue-mathjax :formula="getFormattedFormula(unit)" />]</span>
     </div>
 </template>
 <script>
@@ -28,8 +28,16 @@
         },
         methods: {
             getFormattedFormula(latexFormula) {
-                const t = window.nerdamer.convertToLaTeX(latexFormula)
-                return `\\(${t}\\)`;
+                try {
+                    const t = window.nerdamer.convertToLaTeX(latexFormula)
+                    return `\\(${t}\\)`;
+                } catch (e) { console.error(e) }
+                try {
+                    let t = window.nerdamer.convertToLaTeX(latexFormula.replaceAll("°", "CDEGREE"))
+                    t = t.replaceAll("CDEGREE", "°")
+                    return `\\(${t}\\)`;
+                } catch (e) { console.error(e) }
+                return latexFormula;
             },
         },
         watch: {
