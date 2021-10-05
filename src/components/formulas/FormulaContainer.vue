@@ -56,8 +56,8 @@
             getConvertedFormula(latexFormula) {
                 let convertedFormula = window.nerdamer.solve(latexFormula, this.solveFor).toString()
                 convertedFormula = convertedFormula.slice(1, convertedFormula.length - 1)
-                const t = window.nerdamer(convertedFormula).toTeX()
-                return `\\(${this.solveFor} = ${t}\\)`;
+                const t = window.nerdamer(`${this.solveFor} = ${convertedFormula}`).toTeX()
+                return `\\(${t}\\)`;
             },
             onDelete() {
                 this.$emit("delete")
