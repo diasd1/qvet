@@ -1,52 +1,384 @@
 {
-    "symbols": {
-        "Q": [{
-            "name": "Güte",
-            "formulas": ["frQB"],
-            "description": "Die Güte z.B. eines Schwingkreises",
-            "unit": null
-        }],
-        "U": [{
-            "name": "Spannung",
-            "formulas": ["URI", "PUI"],
-            "description": "Die Spannung",
-            "unit": "V"
-        }],
-        "I": [{
-            "name": "Strom",
-            "formulas": ["URI", "PUI", "PRI"],
-            "description": "Der Strom",
-            "unit": "A"
-        }],
-        "P": [{
-            "name": "Leistung",
-            "formulas": ["PUI", "PRI"],
-            "description": "Die Leistung",
-            "unit": "W"
-        }],
-        "R": [{
-            "name": "Widerstand",
-            "formulas": ["URI", "PRI"],
-            "description": "Der Widerstand",
-            "unit": "Ω"
-        }]
+  "symbols": {
+    "A": [
+      {
+        "name": "Querschnitt",
+        "formulas": [
+          "RRlA"
+        ],
+        "description": "Leiterquerschnitt in Quadratmillimeter",
+        "unit": "mm^2"
+      }
+    ],
+    "α": [
+      {
+        "name": "Temperaturkoeffizient",
+        "formulas": [
+          "DRaDTR20",
+          "RWR201aDT"
+        ],
+        "description": "Temperaturkoeffizient des elektrischen Widerstandes",
+        "unit": "1/K"
+      }
+    ],
+    "c": [
+      {
+        "name": "Lichtgeschwindigkeit ≈ 3E8",
+        "formulas": [
+          "fcl"
+        ],
+        "description": "Vakuumlichtgeschwindigkeit c = 299792458 ≈ 3E8",
+        "unit": "m/s"
+      }
+    ],
+    "ΔR": [
+      {
+        "name": "Widerstandsänderung",
+        "formulas": [
+          "DRaDTR20"
+        ],
+        "description": "Widerstandsänderung in Ohm",
+        "unit": "Ω"
+      }
+    ],
+    "ΔT": [
+      {
+        "name": "Temperaturänderung",
+        "formulas": [
+          "DRaDTR20",
+          "RWR201aDT"
+        ],
+        "description": "Temperaturänderung in Grad Celsius",
+        "unit": "°C"
+      }
+    ],
+    "f": [
+      {
+        "name": "Frequenz",
+        "formulas": [
+          "fcl",
+          "o2pf",
+          "T1f"
+        ],
+        "description": "Die Frequenz in Hertz",
+        "unit": "Hz"
+      }
+    ],
+    "I": [
+      {
+        "name": "Strom",
+        "formulas": [
+          "URI",
+          "PUI",
+          "PRI"
+        ],
+        "description": "Der Strom in Ampere",
+        "unit": "A"
+      }
+    ],
+    "I_eff": [
+      {
+        "name": "Effektivstrom",
+        "formulas": [
+          "IsIeff2",
+          "IssIeff22"
+        ],
+        "description": "Effektivstrom in Ampere",
+        "unit": "A"
+      }
+    ],
+    "I_Ende": [
+      {
+        "name": "Endausschlag ohne Shunt",
+        "formulas": [
+          "RShuntRiISollIEnde1"
+        ],
+        "description": "Endausschlag des Instruments ohne Shunt in Ampere",
+        "unit": "A"
+      }
+    ],
+    "I_s": [
+      {
+        "name": "Spitzenstrom",
+        "formulas": [
+          "IsIeff2"
+        ],
+        "description": "Spitzenstrom in Ampere",
+        "unit": "A"
+      }
+    ],
+    "I_Soll": [
+      {
+        "name": "Sollwert mit Shunt",
+        "formulas": [
+          "RShuntRiISollIEnde1"
+        ],
+        "description": "Der Wert, den das Instrument nach dem Shunteinbau anzeigen soll in Ampere",
+        "unit": "A"
+      }
+    ],
+    "I_ss": [
+      {
+        "name": "Spitzenspitzenstrom",
+        "formulas": [
+          "IssIeff22"
+        ],
+        "description": "Spitzen-Spitzen-Strom in Ampere",
+        "unit": "I"
+      }
+    ],
+    "l": [
+      {
+        "name": "Länge",
+        "formulas": [
+          "RRlA"
+        ],
+        "description": "Länge in Meter",
+        "unit": "m"
+      }
+    ],
+    "λ": [
+      {
+        "name": "Wellenlänge",
+        "formulas": [
+          "fcl"
+        ],
+        "description": "Wellenlänge in Meter",
+        "unit": "m"
+      }
+    ],
+    "ω": [
+      {
+        "name": "Kreisfrequenz",
+        "formulas": [
+          "o2pf"
+        ],
+        "description": "Kreisfrequenz",
+        "unit": "1/s"
+      }
+    ],
+    "P": [
+      {
+        "name": "Leistung",
+        "formulas": [
+          "PRI",
+          "PUI",
+          "WPt"
+        ],
+        "description": "Die Leistung in Watt",
+        "unit": "W"
+      }
+    ],
+    "Q": [
+      {
+        "name": "Güte",
+        "formulas": [
+          "frQB"
+        ],
+        "description": "Die Güte z.B. eines Schwingkreises",
+        "unit": null
+      }
+    ],
+    "R": [
+      {
+        "name": "Widerstand",
+        "formulas": [
+          "PRI",
+          "URI",
+          "RRlA"
+        ],
+        "description": "Der Widerstand in Ohm",
+        "unit": "Ω"
+      }
+    ],
+    "R_20": [
+      {
+        "name": "Kaltwiderstand",
+        "formulas": [
+          "DRaDTR20",
+          "RWR201aDT"
+        ],
+        "description": "Kaltwiderstand bei 20°C in Ohm",
+        "unit": "Ω"
+      }
+    ],
+    "R_i": [
+      {
+        "name": "Innenwiderstand",
+        "formulas": [
+          "RShuntRiISollIEnde1"
+        ],
+        "description": "Innenwiderstand vom Messinstrument in Ohm",
+        "unit": "Ω"
+      }
+    ],
+    "ρ": [
+      {
+        "name": "Spezifischer Widerstand",
+        "formulas": [
+          "RRlA"
+        ],
+        "description": "Spezifischer Widerstand",
+        "unit": "(Ω * mm^2) / m"
+      }
+    ],
+    "R_Shunt": [
+      {
+        "name": "Shuntwiderstand",
+        "formulas": [
+          "RShuntRiISollIEnde1"
+        ],
+        "description": "Widerstandswert vom Shunt in Ohm",
+        "unit": "Ω"
+      }
+    ],
+    "R_W": [
+      {
+        "name": "Widerstand bei Wärme",
+        "formulas": [
+          "RWR201aDT"
+        ],
+        "description": "Widerstand bei Wärme in Ohm",
+        "unit": "Ω"
+      }
+    ],
+    "T": [
+      {
+        "name": "Periodendauer",
+        "formulas": [
+          "T1f"
+        ],
+        "description": "Periodendauer in Sekunden",
+        "unit": "s"
+      }
+    ],
+    "t": [
+      {
+        "name": "Zeit",
+        "formulas": [
+          "WPt"
+        ],
+        "description": "Zeit in Sekunden",
+        "unit": "s"
+      }
+    ],
+    "U": [
+      {
+        "name": "Spannung",
+        "formulas": [
+          "URI",
+          "PUI"
+        ],
+        "description": "Die Spannung in Volt",
+        "unit": "V"
+      }
+    ],
+    "U_eff": [
+      {
+        "name": "Effektivspannung",
+        "formulas": [
+          "UsUeff2",
+          "UssUeff22"
+        ],
+        "description": "Effektivspannung in Volt",
+        "unit": "V"
+      }
+    ],
+    "U_s": [
+      {
+        "name": "Spitzenspannung",
+        "formulas": [
+          "UsUeff2"
+        ],
+        "description": "Scheitelwert in Volt",
+        "unit": "V"
+      }
+    ],
+    "U_ss": [
+      {
+        "name": "Spitzenspitzenspannung",
+        "formulas": [
+          "UssUeff22"
+        ],
+        "description": "Spitzen-Spitzen-Spannung in Volt",
+        "unit": "V"
+      }
+    ],
+    "W": [
+      {
+        "name": "Arbeit",
+        "formulas": [
+          "WPt"
+        ],
+        "description": "Elektrische Arbeit in Wattsekunden",
+        "unit": "Ws"
+      }
+    ]
+  },
+  "formulas": {
+    "DRaDTR20": {
+      "formula": "ΔR = α * ΔT * R_20",
+      "description": "Widerstandsänderung berechnen"
     },
-    "formulas": {
-        "frQB": {
-            "formula": "Q = fr / B",
-            "description": "Güte Q und Bandbreite B bei Resonanzfrequenz fr berechnen"
-        },
-        "URI": {
-            "formula": "U = R * I",
-            "description": "Spannung U durch Widerstand R und Strom I bestimmen"
-        },
-        "PUI": {
-            "formula": "P = U * I",
-            "description": "Leistung P durch Spannung U und Strom I bestimmen"
-        },
-        "PRI": {
-            "formula": "P = R * I ^ 2",
-            "description": "Leistung P durch Widerstand R und Strom I bestimmen"
-        }
+    "fcl": {
+      "formula": "f = c / λ",
+      "description": "Wellenlänge λ berechnen"
+    },
+    "frQB": {
+      "formula": "Q = fr / B",
+      "description": "Güte Q und Bandbreite B bei Resonanzfrequenz fr berechnen"
+    },
+    "IssIeff22": {
+      "formula": "I_ss = (I_eff * sqrt(2)) * 2",
+      "description": "Spitzenspitzenstrom berechnen"
+    },
+    "IsIeff2": {
+      "formula": "I_s = I_eff * sqrt(2)",
+      "description": "Spitzenstrom berechnen"
+    },
+    "o2pf": {
+      "formula": "ω = 2 * π * f",
+      "description": "Kreisfrequenz ω berechnen"
+    },
+    "PRI": {
+      "formula": "P = R * I ^ 2",
+      "description": "Leistung P durch Widerstand R und Strom I bestimmen"
+    },
+    "PUI": {
+      "formula": "P = U * I",
+      "description": "Leistung P durch Spannung U und Strom I bestimmen"
+    },
+    "RRlA": {
+      "formula": "R = (ρ * l) / A",
+      "description": "Elektrischer Widerstand vom Leiter bestimmen"
+    },
+    "RShuntRiISollIEnde1": {
+      "formula": "R_Shunt = R_i / ((I_Soll / I_Ende) - 1)",
+      "description": "Elektrischer Widerstand vom Leiter bestimmen"
+    },
+    "RWR201aDT": {
+      "formula": "R_W = R_20 * (1 + α * ΔT)",
+      "description": "Widerstand bei Wärme berechnen"
+    },
+    "T1f": {
+      "formula": "T = 1 / f",
+      "description": "Periodendauer berechnen"
+    },
+    "URI": {
+      "formula": "U = R * I",
+      "description": "Spannung U durch Widerstand R und Strom I bestimmen"
+    },
+    "UssUeff22": {
+      "formula": "U_ss = (U_eff * sqrt(2)) * 2",
+      "description": "Spitzenspitzenspannung berechnen"
+    },
+    "UsUeff2": {
+      "formula": "U_s = U_eff * sqrt(2)",
+      "description": "Spitzenspannung berechnen"
+    },
+    "WPt": {
+      "formula": "W = P * t",
+      "description": "Arbeit W durch Leistung P und Zeit t bestimmen"
     }
+  }
 }
