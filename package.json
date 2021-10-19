@@ -1,6 +1,6 @@
 {
   "name": "qvet",
-  "version": "0.9.5",
+  "version": "0.9.6",
   "private": true,
   "description": "QV / ET",
   "author": "david.diashorta <david.diashorta@gmail.com>",
@@ -19,7 +19,6 @@
     "nerdamer": "^1.1.12",
     "register-service-worker": "^1.7.1",
     "vue": "^2.6.11",
-    "vue-mathjax": "0.0.11",
     "vue-meta": "^2.4.0"
   },
   "devDependencies": {

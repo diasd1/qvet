@@ -6,8 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-    <script id="MathJax-script" async src="/js/mathjax.js"></script>
+    <!--script id="MathJax-script" async src="/MathJax.js"></script-->
 
+    <!--script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML"></script-->
+
+    <script>
+    MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+    },
+    svg: {
+        fontCache: 'global'
+    }
+    };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script"></script>
+    <!--script src="/MathJax3.js" id="MathJax-script"></script-->
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script src="/js/nerdamer/nerdamer.core.js"></script>
     <script src="/js/nerdamer/Algebra.js"></script>
     <script src="/js/nerdamer/Calculus.js"></script>

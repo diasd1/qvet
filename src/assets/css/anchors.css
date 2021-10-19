@@ -1,8 +1,5 @@
 a.anchor,
-a:visited.anchor {
-    color: inherit !important;
-}
-
+a:visited.anchor,
 a:hover.anchor {
-    color: inerhit !important;
+    color: inherit !important;
 }

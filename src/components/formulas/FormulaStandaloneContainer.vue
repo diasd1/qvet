@@ -1,22 +1,22 @@
 <template>
     <div class="formula-container" :class="{ 'hidden': hidden }">
         <a class="anchor" :id="formula.name"><h4>{{formula.name}}</h4></a>
-        <vue-mathjax :formula="getFormattedFormula(formula.formula)" />
+        <formula :formula="getFormattedFormula(formula.formula)" />
         <br><br>
         <FormulaSymbolSmall @valueChange="valueChange" v-for="(symbol, index) in symbols" :key="index" :withInput="true" :value="symbol.value" :symbol="symbol.symbol" :name="symbol.name" :unit="symbol.unit" />
     </div>
 </template>
 
 <script>
-    import {VueMathjax} from 'vue-mathjax';
     import FormulaSymbolSmall from "../symbols/FormulaSymbolSmall.vue"
     import db from "../../../db/main.json";
+    import Formula from './Formula.vue';
 
     export default {
         name: 'FormulaStandaloneContainer',
         components: {
-            "vue-mathjax": VueMathjax,
-            FormulaSymbolSmall
+            FormulaSymbolSmall,
+            Formula
         },
         data() {
             const formulaSymbols = this.getFormulaSymbols()

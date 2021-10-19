@@ -4,7 +4,8 @@
             <a class="flexa" target="_blank" :href="`/formulas#${formula.name}`">
                 <h4>{{formula.name}}</h4>
             </a>
-            <vue-mathjax :formula="getConvertedFormula(formula.formula)" />
+            <input type="checkbox" v-model="convert">
+            <formula :formula="convertedFormula" />
         </div>
         <div class="formula-symbols">
             <FormulaSymbolSmall v-for="(symbol, index) in symbols" :key="index" :symbol="symbol.symbol"
@@ -14,16 +15,14 @@
 </template>
 
 <script>
-    import {
-        VueMathjax
-    } from 'vue-mathjax';
+    import Formula from "@/components/formulas/Formula.vue"
     import FormulaSymbolSmall from "../symbols/FormulaSymbolSmall.vue"
     import db from "../../../db/main.json";
 
     export default {
         name: 'FormulaContainer',
         components: {
-            "vue-mathjax": VueMathjax,
+            Formula,
             FormulaSymbolSmall
         },
         data() {
@@ -33,12 +32,19 @@
             symbols.sort((a, b) => (a.symbol > b.symbol) ? 1 : ((b.symbol > a.symbol) ? -1 : 0))
 
             return {
-                symbols
+                symbols,
+                convert: false,
+                convertedFormula: `\\(${this.formula.formula}\\)`
             }
         },
         props: {
             formula: Object,
             solveFor: String
+        },
+        watch: {
+            convert() {
+                this.convertedFormula = this.getConvertedFormula(this.formula.formula)
+            }
         },
         methods: {
             getFormattedFormula(latexFormula) {
@@ -54,6 +60,11 @@
                 return latexFormula;
             },
             getConvertedFormula(latexFormula) {
+                if (!this.convert)
+                {
+                    return `\\(${latexFormula}\\)`
+                }
+
                 let convertedFormula = window.nerdamer.solve(latexFormula, this.solveFor).toString()
                 convertedFormula = convertedFormula.slice(1, convertedFormula.length - 1)
                 const t = window.nerdamer(`${this.solveFor} = ${convertedFormula}`).toTeX()
