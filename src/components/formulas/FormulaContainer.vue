@@ -4,8 +4,9 @@
             <a class="flexa" target="_blank" :href="`/formulas#${formula.name}`">
                 <h4>{{formula.name}}</h4>
             </a>
-            <input type="checkbox" v-model="convert">
             <formula :formula="convertedFormula" />
+            <br><br>
+            <toggle-switch :group="String(Date.now())" @change="convert = $event.value == 'Converted'" :options="myOptions" :isActive="convert" />
         </div>
         <div class="formula-symbols">
             <FormulaSymbolSmall v-for="(symbol, index) in symbols" :key="index" :symbol="symbol.symbol"
@@ -18,12 +19,14 @@
     import Formula from "@/components/formulas/Formula.vue"
     import FormulaSymbolSmall from "../symbols/FormulaSymbolSmall.vue"
     import db from "../../../db/main.json";
+    import ToggleSwitch from 'vuejs-toggle-switch'
 
     export default {
         name: 'FormulaContainer',
         components: {
             Formula,
-            FormulaSymbolSmall
+            FormulaSymbolSmall,
+            ToggleSwitch
         },
         data() {
             const formulaSymbols = this.getFormulaSymbols()
@@ -34,7 +37,34 @@
             return {
                 symbols,
                 convert: false,
-                convertedFormula: `\\(${this.formula.formula}\\)`
+                convertedFormula: `\\(${this.formula.formula}\\)`,
+                myOptions: {
+                    layout: {
+                        color: 'var(--text)',
+                        backgroundColor: 'var(--neutral)',
+                        selectedColor: 'white',
+                        selectedBackgroundColor: 'green',
+                        borderColor: 'black',
+                        fontFamily: 'Poppins',
+                        fontWeight: 'normal',
+                        fontWeightSelected: 'bold',
+                        squareCorners: false,
+                        noBorder: false
+                    },
+                    size: {
+                        fontSize: "1",
+                        height: "2.5",
+                        width: "15",
+                    },
+                    items: {
+                        preSelected: 'Default',
+                        disabled: false,
+                        labels: [
+                        {name: 'Default', color: 'var(--background)', backgroundColor: 'var(--text)'},
+                        {name: 'Converted', color: 'var(--background)', backgroundColor: 'var(--text)'},
+                        ]
+                    }
+                }
             }
         },
         props: {
@@ -155,5 +185,11 @@
     a.flexa:hover {
         color: var(--success);
         cursor: pointer;
+    }
+
+    .toggle-switch {
+        font-size: 5px !important;
+        width: 5px;
+        height: 5px;
     }
 </style>
