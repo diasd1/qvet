@@ -37,7 +37,7 @@
             return {
                 symbols,
                 convert: false,
-                convertedFormula: `\\(${this.formula.formula}\\)`,
+                convertedFormula: this.getFormattedFormula(this.formula.formula),
                 myOptions: {
                     layout: {
                         color: 'var(--text)',
@@ -92,7 +92,7 @@
             getConvertedFormula(latexFormula) {
                 if (!this.convert)
                 {
-                    return `\\(${latexFormula}\\)`
+                    return this.getFormattedFormula(latexFormula)
                 }
 
                 let convertedFormula = window.nerdamer.solve(latexFormula, this.solveFor).toString()
