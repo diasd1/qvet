@@ -3,6 +3,7 @@
         <div class="navbar">
             <p><a id="symbols" href="/">Main (Symbols)</a></p>
             <p><a id="formulas" href="/formulas">Formulas</a></p>
+            <p><a id="theory" href="/theory">Theory</a></p>
         </div>
         <p id="madeBy">{{year}}, Made with ❤️ by <a href="https://github.com/dxstiny">dxstiny</a> ({{version}})</p>
     </div>

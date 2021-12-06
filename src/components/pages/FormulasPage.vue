@@ -6,7 +6,6 @@
                 :multiselect="true" />
         </div>
         <div class="scrollablewrapper">
-
             <FormulasBody :filter="filter" />
             <Footer />
         </div>

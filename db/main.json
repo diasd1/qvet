@@ -380,5 +380,8 @@
       "formula": "W = P * t",
       "description": "Arbeit W durch Leistung P und Zeit t bestimmen"
     }
+  },
+  "theory": {
+    "Spule": "Das ist die Theorie zu der Spule. \\(x = 2/3\\)"
   }
 }

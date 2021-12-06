@@ -1,5 +1,6 @@
 <script>
     import Landing from './components/pages/Landing.vue'
+    import Theory from './components/pages/Theory.vue'
     import FormulasPage from './components/pages/FormulasPage.vue'
     import NotFound from './components/pages/NotFound.vue'
     import Vue from 'vue';
@@ -8,7 +9,8 @@
 
     const routes = {
         '/': Landing,
-        '/formulas': FormulasPage
+        '/formulas': FormulasPage,
+        '/theory': Theory
     }
 
     export default {
@@ -16,6 +18,7 @@
         components: {
             Landing,
             NotFound,
+            Theory,
             FormulasPage
         },
         data() {
