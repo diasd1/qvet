@@ -40,11 +40,6 @@
 </script>
 
 <style scoped>
-    @import '../../assets/css/theme/dark.css';
-    @import '../../assets/css/applyTheme.css';
-    @import '../../assets/css/layout.css';
-    @import '../../assets/css/hyperlinks.css';
-
     .body {
         flex: 90;
         display: flex;

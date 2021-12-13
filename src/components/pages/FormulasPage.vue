@@ -62,11 +62,6 @@
 </script>
 
 <style scoped>
-    @import '../../assets/css/theme/dark.css';
-    @import '../../assets/css/applyTheme.css';
-    @import '../../assets/css/layout.css';
-    @import '../../assets/css/anchors.css';
-
     .scrollablewrapper {
         overflow-x: hidden;
         overflow-y: auto;

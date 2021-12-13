@@ -20,7 +20,7 @@
         data() {
             return {
                 year: new Date().getFullYear(),
-                version: pkg.version || "0.9.7"
+                version: pkg.version || "0.9.8"
             }
         }
     }

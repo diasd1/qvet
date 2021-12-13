@@ -65,6 +65,12 @@
 
 <style src="./assets/fonts/Poppins/fontface.css"></style>
 
+<style src="./assets/css/theme/dark.css"></style>
+<style src="./assets/css/applyTheme.css"></style>
+<style src="./assets/css/layout.css"></style>
+<style src="./assets/css/hyperlinks.css"></style>
+<style src="./assets/css/images.css"></style>
+
 <style>
     .hidden {
         display: none !important;
