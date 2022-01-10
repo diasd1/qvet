@@ -382,6 +382,8 @@
     }
   },
   "theory": {
-    "Spule": "Das ist die Theorie zu der Spule. <span class='outlinedThin green rounded'>Formel zur Berechnung: \\(x = 2/3\\)</span><img class='rounded outlined red eigthWidth leftAligned' src='img/resources/impedanzverstaerker.png'/>Das ist mehr Text :)<br>Die Induktivität <a href='/#I'>L</a> kann auch mit <a href='/formulas#URI'>dieser</a> Formel berechnet werden."
+    "Spule": "Das ist die Theorie zu der Spule. <span class='outlinedThin green rounded'>Formel zur Berechnung: \\(x = 2/3\\)</span><img class='rounded outlined red eigthWidth leftAligned' src='img/resources/impedanzverstaerker.png'/>Das ist mehr Text :)<br>Die Induktivität <a href='/#I'>L</a> kann auch mit <a href='/formulas#URI'>dieser</a> Formel berechnet werden.",
+    "LIFO": "Last In, First Out",
+    "FILO": "First In, Last Out"
   }
 }
